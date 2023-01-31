@@ -5,6 +5,8 @@
 import java.util.*;
 import java.io.*;
 
+import java.util.*;
+
 public class QuestionsGame {
     // Your code here
     QuestionNode overallRoot;
@@ -25,6 +27,21 @@ public class QuestionsGame {
         {
             throw new IllegalArgumentException();
         }
+    }
+
+    public void play()
+    {
+
+    }
+
+    public QuestionsGame(Scanner input)
+    {
+
+    }
+
+    public void saveQuestions(PrintStream output)
+    {
+
     }
 
     public void play()
