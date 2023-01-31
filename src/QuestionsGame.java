@@ -5,6 +5,7 @@
 
 public class QuestionsGame {
     // Your code here
+    System.out.println("hi");
 
     private static class QuestionNode {
         // Your code here
