@@ -34,21 +34,6 @@ public class QuestionsGame {
 
     }
 
-    public QuestionsGame(Scanner input)
-    {
-
-    }
-
-    public void saveQuestions(PrintStream output)
-    {
-
-    }
-
-    public void play()
-    {
-
-    }
-
     private static class QuestionNode {
         // Your code here
         String data;
