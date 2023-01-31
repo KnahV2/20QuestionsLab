@@ -5,15 +5,10 @@
 
 public class QuestionsGame {
     // Your code here
-<<<<<<< HEAD
-    
     public QuestionsGame(String object)
     {
 
     }
-=======
-    System.out.println("hi");
->>>>>>> 3166d32f812ec2c36a7aac8daee9139d67ca36d9
 
     private static class QuestionNode {
         // Your code here
