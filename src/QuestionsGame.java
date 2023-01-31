@@ -5,8 +5,28 @@
 
 public class QuestionsGame {
     // Your code here
+    
+    public QuestionsGame(String object)
+    {
+
+    }
 
     private static class QuestionNode {
         // Your code here
+        int data;
+        QuestionNode left;
+        QuestionNode right;
+
+        public QuestionNode(int data)
+        {
+            this(data, null, null);
+        }
+
+        public QuestionNode(int data, QuestionNode left, QuestionNode right)
+        {
+            this.data = data;
+            this.left = left;
+            this.right = right;
+        }
     }
 }
