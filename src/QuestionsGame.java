@@ -5,8 +5,6 @@
 import java.util.*;
 import java.io.*;
 
-import java.util.*;
-
 public class QuestionsGame {
     // Your code here
     QuestionNode overallRoot;
@@ -18,7 +16,7 @@ public class QuestionsGame {
 
     public QuestionsGame(Scanner input)
     {
-
+        overallRoot = new QuestionNode(input.next());
     }
 
     public void saveQuestions(PrintStream output)
