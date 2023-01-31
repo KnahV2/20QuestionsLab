@@ -3,9 +3,26 @@
 // You should delete this comment and replace it with your class
 // header comment.
 
+import java.util.*;
+
 public class QuestionsGame {
     // Your code here
     public QuestionsGame(String object)
+    {
+
+    }
+
+    public QuestionsGame(Scanner input)
+    {
+
+    }
+
+    public void saveQuestions(PrintStream output)
+    {
+
+    }
+
+    public void play()
     {
 
     }
