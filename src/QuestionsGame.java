@@ -25,11 +25,33 @@ public class QuestionsGame {
         {
             throw new IllegalArgumentException();
         }
+        saveQuestions(overallRoot, output);
+    }
+
+    private void saveQuestions(QuestionNode root, PrintStream output)
+    {
+        if(isAnswer(root))
+        {
+            output.println("A:");
+            output.println(root.data);
+        }
+        else
+        {
+            output.println("Q:");
+            output.println(root.data);
+            saveQuestions(root.left, output);
+            saveQuestions(root.right, output);
+        }
     }
 
     public void play()
     {
 
+    }
+
+    private boolean isAnswer(QuestionNode node)
+    {
+        return (node.left == null || node.right == null);
     }
 
     private static class QuestionNode {
