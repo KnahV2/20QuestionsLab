@@ -20,6 +20,7 @@ public class QuestionsGame {
     public QuestionsGame(String object)
     {
         overallRoot = new QuestionNode(object);
+
     }
 
     public QuestionsGame(Scanner input)
@@ -118,6 +119,38 @@ public class QuestionsGame {
     {
         return (node.left == null || node.right == null);
     }
+
+    public String readTree(){
+        if(overallRoot == null) {
+			return "No Tree";
+		}
+		return readTree(overallRoot);
+	}
+	
+	private String readTree(QuestionNode root) {
+		String total = "";
+		
+		if(root.left == null && root.right == null) {
+			total = total + root.data + " ";
+			return total;
+		}
+		
+		else {
+            total = total + root.data + " ";
+            
+			if(root.left != null) {
+				total = total + readTree(root.left);
+			}
+			
+			if(root.right != null) {
+				total = total + readTree(root.right);
+			}
+		}
+		
+		return total;
+    }
+
+
 
     private static class QuestionNode {
         // Your code here
