@@ -1,14 +1,16 @@
-//Hank Henning
+//Hank Henning and Alexis Rambaran
 //Watson
 //1/31/23
 //20 Questions Lab
+
 import java.util.*;
 import java.io.*;
 
 public class QuestionsGame {
-    // Your code here
+    // This tree will hold questions and answers throughout the game
     QuestionNode overallRoot;
 
+    //This constructer with a parameter will initialize the tree with the parameter as a single leaf node 
     public QuestionsGame(String object)
     {
         overallRoot = new QuestionNode(object);
@@ -16,6 +18,7 @@ public class QuestionsGame {
 
     public QuestionsGame(Scanner input)
     {
+
         overallRoot = new QuestionNode(input.next());
     }
 
@@ -29,14 +32,14 @@ public class QuestionsGame {
 
     public void play()
     {
-
+        
     }
 
     private static class QuestionNode {
         // Your code here
-        String data;
-        QuestionNode left;
-        QuestionNode right;
+        public String data;
+        public QuestionNode left;
+        public QuestionNode right;
 
         public QuestionNode(String data)
         {
