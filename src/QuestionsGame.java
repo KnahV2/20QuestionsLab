@@ -7,14 +7,11 @@ import java.util.*;
 import java.io.*;
 
 public class QuestionsGame {
-<<<<<<< Updated upstream
     // This tree will hold questions and answers throughout the game
-    QuestionNode overallRoot;
-=======
+
     // Your code here
     private QuestionNode overallRoot;
     private Scanner reader;
->>>>>>> Stashed changes
 
     //This constructer with a parameter will initialize the tree with the parameter as a single leaf node 
     public QuestionsGame(String object)
@@ -56,9 +53,6 @@ public class QuestionsGame {
 
     public void play()
     {
-<<<<<<< Updated upstream
-        
-=======
         overallRoot = play(overallRoot);
     }
 
@@ -112,7 +106,6 @@ public class QuestionsGame {
             response = reader.nextLine().trim().toLowerCase();
         }
         return response.startsWith("y");
->>>>>>> Stashed changes
     }
 
     private boolean isAnswer(QuestionNode node)
