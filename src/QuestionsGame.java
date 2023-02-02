@@ -14,17 +14,41 @@ public class QuestionsGame {
     private Scanner reader;
 
     //This constructer with a parameter will initialize the tree with the parameter as a single leaf node 
+    public QuestionsGame()
+    {
+        overallRoot = new QuestionNode("computer");
+        reader = new Scanner(System.in);
+    }
     public QuestionsGame(String object)
     {
         overallRoot = new QuestionNode(object);
-
+        reader = new Scanner(System.in);
     }
 
     public QuestionsGame(Scanner input)
     {
-
-        overallRoot = new QuestionNode(input.next());
+        overallRoot = new QuestionNode(input.nextLine());
+        reader = new Scanner(System.in);
     }
+
+    public void read(Scanner input) {
+        while(input.hasNextLine()) {
+           overallRoot = readHelper(input); 
+        }
+     }
+     // helper method that reads entire lines of input to 
+     // construct a tree based on a file. 
+     private QuestionNode readHelper(Scanner input) {
+        String type = input.nextLine();
+        String data = input.nextLine();
+        QuestionNode root = new QuestionNode(data);  
+    
+        if (type.contains("Q:")) {
+           root.left = readHelper(input);
+           root.right = readHelper(input);   
+        }
+        return root; 
+     }
 
     public void saveQuestions(PrintStream output)
     {
@@ -51,6 +75,36 @@ public class QuestionsGame {
         }
     }
 
+    /*public String readTree(){
+        if(overallRoot == null) {
+			return "No Tree";
+		}
+		return readTree(overallRoot);
+	}
+	
+	private String readTree(QuestionNode root) {
+		String total = "";
+		
+		if(root.left == null && root.right == null) {
+			total = total + root.data + " ";
+			return total;
+		}
+		
+		else {
+            total = total + root.data + " ";
+            
+			if(root.left != null) {
+				total = total + readTree(root.left);
+			}
+			
+			if(root.right != null) {
+				total = total + readTree(root.right);
+			}
+		}
+		
+		return total;
+    }*/
+
     public void play()
     {
         overallRoot = play(overallRoot);
@@ -60,7 +114,7 @@ public class QuestionsGame {
     {
         if(isAnswer(currentSpot))
         {
-            if(yesTo("Is your thing " + currentSpot.data + "?"))
+            if(yesTo(currentSpot.data))
             {
                 System.out.println("I got it right you suck xd");
             }
@@ -112,38 +166,6 @@ public class QuestionsGame {
     {
         return (node.left == null || node.right == null);
     }
-
-    public String readTree(){
-        if(overallRoot == null) {
-			return "No Tree";
-		}
-		return readTree(overallRoot);
-	}
-	
-	private String readTree(QuestionNode root) {
-		String total = "";
-		
-		if(root.left == null && root.right == null) {
-			total = total + root.data + " ";
-			return total;
-		}
-		
-		else {
-            total = total + root.data + " ";
-            
-			if(root.left != null) {
-				total = total + readTree(root.left);
-			}
-			
-			if(root.right != null) {
-				total = total + readTree(root.right);
-			}
-		}
-		
-		return total;
-    }
-
-
 
     private static class QuestionNode {
         // Your code here
