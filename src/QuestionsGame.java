@@ -8,8 +8,6 @@ import java.io.*;
 
 public class QuestionsGame {
     // This tree will hold questions and answers throughout the game
-
-    // Your code here
     private QuestionNode overallRoot;
     private Scanner reader;
 
@@ -36,8 +34,7 @@ public class QuestionsGame {
            overallRoot = readHelper(input); 
         }
      }
-     // helper method that reads entire lines of input to 
-     // construct a tree based on a file. 
+     // A helper method that reads entire lines of input to construct a tree based on a file. 
      private QuestionNode readHelper(Scanner input) {
         String type = input.nextLine();
         String data = input.nextLine();
@@ -75,7 +72,7 @@ public class QuestionsGame {
         }
     }
 
-    /*public String readTree(){
+    public String readTree(){
         if(overallRoot == null) {
 			return "No Tree";
 		}
@@ -103,15 +100,17 @@ public class QuestionsGame {
 		}
 		
 		return total;
-    }*/
-
-    public void play()
-    {
-        overallRoot = play(overallRoot);
     }
 
-    private QuestionNode play(QuestionNode currentSpot)
+    public void play(Scanner file)
     {
+        overallRoot = play(overallRoot, file);
+    }
+
+    private QuestionNode play(QuestionNode currentSpot, Scanner file)
+    {
+        readTree();
+
         if(isAnswer(currentSpot))
         {
             if(yesTo(currentSpot.data))
@@ -139,14 +138,14 @@ public class QuestionsGame {
         {
             if(yesTo(currentSpot.data))
             {
-                currentSpot.left = play(currentSpot.left);
+                currentSpot.left = play(currentSpot.left, file);
             }
             else
             {
-                currentSpot.right = play(currentSpot.right);
+                currentSpot.right = play(currentSpot.right, file);
             }
         }
-        return null;
+        return currentSpot;
     }
 
     public boolean yesTo(String prompt)
