@@ -27,7 +27,7 @@ public class QuestionsGame {
 
     public QuestionsGame(Scanner input)
     {
-        overallRoot = new QuestionNode(input.nextLine());
+        read(input);
         reader = new Scanner(System.in);
     }
 
@@ -40,7 +40,7 @@ public class QuestionsGame {
      // construct a tree based on a file. 
     private QuestionNode readHelper(Scanner input) {
         String type = input.nextLine();
-        String data = input.next();
+        String data = input.nextLine();
         QuestionNode root = new QuestionNode(data);  
     
         if (type.contains("Q:")) {
