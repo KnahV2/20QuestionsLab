@@ -23,14 +23,14 @@ public class QuestionsMain {
 
         Scanner questions = new Scanner(questionsFile);
         QuestionsGame game = createGame(questions, console);
-
+        
         System.out.print("Let's play!  ");
         do {
             System.out.println("Please choose your object, and I'll " +
                                "start guessing.");
             System.out.println("Press Enter when you're ready to begin!");
             console.nextLine();
-            game.play();
+            game.play(questions);
             System.out.println();
             game.saveQuestions(new PrintStream(questionsFile));
             System.out.print("Do you want to play again (y/n)? ");

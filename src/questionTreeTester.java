@@ -5,44 +5,13 @@ import java.util.Scanner;
 
 public class questionTreeTester
 {
-    QuestionNode overallRoot;
-    Scanner reader;
     public static void main(String[] args) throws IOException{
-        questionTreeTester tester = new questionTreeTester();
         BinaryTreePrinter printer = new BinaryTreePrinter();
 
-        Scanner file = new Scanner(new File("spec-questions.txt"));
-        printer.printPreOrder(System.out, tester.treeMaker(file)); 
+        Scanner file = new Scanner(new File("questionz"));
+        QuestionsGame theTree = new QuestionsGame(file);
+        printer.printPreOrder(System.out, theTree.overallRoot); 
     }
-
-    public QuestionNode treeMaker(Scanner input) 
-    {
-        //Paste your QuestionGame constructor code here and return your overall Root once the tree is made.
-        overallRoot = new QuestionNode(input.nextLine());
-        reader = input;
-
-        return overallRoot;
-    }
-}
-class QuestionNode
-{
-    //Paste your QuestionNode code here
-        /* My code is assuming nodes have data, left and right */
-        public String data;
-        public QuestionNode left;
-        public QuestionNode right;
-
-        public QuestionNode(String data)
-        {
-            this(data, null, null);
-        }
-
-        public QuestionNode(String data, QuestionNode left, QuestionNode right)
-        {
-            this.data = data;
-            this.left = left;
-            this.right = right;
-        }
 }
 
 class BinaryTreePrinter {
@@ -50,7 +19,7 @@ class BinaryTreePrinter {
     public BinaryTreePrinter() {}
     
     //Assumes your nodes have data, left and right
-	private String traversePreOrder(QuestionNode root) {
+	private String traversePreOrder(QuestionsGame.QuestionNode root) {
 
         if (root == null) {
             return "";
@@ -68,7 +37,7 @@ class BinaryTreePrinter {
 
         return sb.toString();
     }
-    private void traverseNodes(StringBuilder sb, String padding, String pointer, QuestionNode node, boolean hasRightSibling) {
+    private void traverseNodes(StringBuilder sb, String padding, String pointer, QuestionsGame.QuestionNode node, boolean hasRightSibling) {
 
         if (node != null) {
 
@@ -95,7 +64,7 @@ class BinaryTreePrinter {
 
     }
 
-    public void printPreOrder(PrintStream os, QuestionNode overallRoot) {
+    public void printPreOrder(PrintStream os, QuestionsGame.QuestionNode overallRoot) {
         os.print(traversePreOrder(overallRoot));
     }
 

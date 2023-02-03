@@ -10,8 +10,8 @@ public class QuestionsGame {
     // This tree will hold questions and answers throughout the game
 
     // Your code here
-    private QuestionNode overallRoot;
-    private Scanner reader;
+    QuestionNode overallRoot;
+    Scanner reader;
 
     //This constructer with a parameter will initialize the tree with the parameter as a single leaf node 
     public QuestionsGame()
@@ -38,9 +38,9 @@ public class QuestionsGame {
      }
      // helper method that reads entire lines of input to 
      // construct a tree based on a file. 
-     private QuestionNode readHelper(Scanner input) {
+    private QuestionNode readHelper(Scanner input) {
         String type = input.nextLine();
-        String data = input.nextLine();
+        String data = input.next();
         QuestionNode root = new QuestionNode(data);  
     
         if (type.contains("Q:")) {
@@ -50,32 +50,7 @@ public class QuestionsGame {
         return root; 
      }
 
-    public void saveQuestions(PrintStream output)
-    {
-        if(output == null)
-        {
-            throw new IllegalArgumentException();
-        }
-        saveQuestions(overallRoot, output);
-    }
-
-    private void saveQuestions(QuestionNode root, PrintStream output)
-    {
-        if(isAnswer(root))
-        {
-            output.println("A:");
-            output.println(root.data);
-        }
-        else
-        {
-            output.println("Q:");
-            output.println(root.data);
-            saveQuestions(root.left, output);
-            saveQuestions(root.right, output);
-        }
-    }
-
-    /*public String readTree(){
+    public String readTree(){
         if(overallRoot == null) {
 			return "No Tree";
 		}
@@ -103,15 +78,42 @@ public class QuestionsGame {
 		}
 		
 		return total;
-    }*/
-
-    public void play()
-    {
-        overallRoot = play(overallRoot);
     }
 
-    private QuestionNode play(QuestionNode currentSpot)
+    public void saveQuestions(PrintStream output)
     {
+        if(output == null)
+        {
+            throw new IllegalArgumentException();
+        }
+        saveQuestions(overallRoot, output);
+    }
+
+    private void saveQuestions(QuestionNode root, PrintStream output)
+    {
+        if(isAnswer(root))
+        {
+            output.println("A:");
+            output.println(root.data);
+        }
+        else
+        {
+            output.println("Q:");
+            output.println(root.data);
+            saveQuestions(root.left, output);
+            saveQuestions(root.right, output);
+        }
+    }
+
+    public void play(Scanner input)
+    {
+        read(input);
+        overallRoot = play(overallRoot, input);
+    }
+
+    private QuestionNode play(QuestionNode currentSpot, Scanner input)
+    {
+        readTree();
         if(isAnswer(currentSpot))
         {
             if(yesTo(currentSpot.data))
@@ -139,19 +141,19 @@ public class QuestionsGame {
         {
             if(yesTo(currentSpot.data))
             {
-                currentSpot.left = play(currentSpot.left);
+                currentSpot.left = play(currentSpot.left, input);
             }
             else
             {
-                currentSpot.right = play(currentSpot.right);
+                currentSpot.right = play(currentSpot.right, input);
             }
         }
-        return null;
+        return currentSpot;
     }
 
     public boolean yesTo(String prompt)
     {
-        System.out.print(prompt + " (y/n)?");
+        System.out.print(prompt + " (y/n)? ");
         String response = reader.nextLine().trim().toLowerCase();
         while(!response.startsWith("y") && !response.startsWith("n"))
         {
@@ -167,7 +169,7 @@ public class QuestionsGame {
         return (node.left == null || node.right == null);
     }
 
-    private static class QuestionNode {
+    public static class QuestionNode {
         // Your code here
         public String data;
         public QuestionNode left;
