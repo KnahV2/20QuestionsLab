@@ -11,12 +11,14 @@ public class QuestionsGame {
     private QuestionNode overallRoot;
     private Scanner reader;
 
-    //This constructer with a parameter will initialize the tree with the parameter as a single leaf node 
+    //This default constructor will
     public QuestionsGame()
     {
         overallRoot = new QuestionNode("computer");
         reader = new Scanner(System.in);
     }
+
+    //This constructer with a parameter will initialize the tree with the parameter as a single leaf node 
     public QuestionsGame(String object)
     {
         overallRoot = new QuestionNode(object);
@@ -25,7 +27,7 @@ public class QuestionsGame {
 
     public QuestionsGame(Scanner input)
     {
-        overallRoot = new QuestionNode(input.nextLine());
+        read(input);
         reader = new Scanner(System.in);
     }
 
@@ -109,7 +111,6 @@ public class QuestionsGame {
 
     private QuestionNode play(QuestionNode currentSpot, Scanner file)
     {
-        readTree();
 
         if(isAnswer(currentSpot))
         {

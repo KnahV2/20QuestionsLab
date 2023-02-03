@@ -1,2 +1,26 @@
-A:
 Q:
+Is it an animal?
+Q:
+Can it fly?
+A:
+bird
+Q:
+Does it have a tail?
+Q:
+Does it live in the jungle?
+A:
+monkey
+A:
+mouse
+A:
+spider
+Q:
+Does it have wheels?
+A:
+bicycle
+Q:
+Is it nice?
+A:
+TA
+A:
+teacher
