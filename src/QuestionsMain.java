@@ -23,7 +23,7 @@ public class QuestionsMain {
 
         Scanner questions = new Scanner(questionsFile);
         QuestionsGame game = createGame(questions, console);
-
+        
         System.out.print("Let's play!  ");
         do {
             System.out.println("Please choose your object, and I'll " +
