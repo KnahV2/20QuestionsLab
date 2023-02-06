@@ -8,8 +8,8 @@ import java.io.*;
 
 public class QuestionsGame {
     // This tree will hold questions and answers throughout the game
-    private QuestionNode overallRoot;
-    private Scanner reader;
+    QuestionNode overallRoot;
+    Scanner reader;
 
     //This default constructor will
     public QuestionsGame()
@@ -167,7 +167,7 @@ public class QuestionsGame {
         return (node.left == null || node.right == null);
     }
 
-    private static class QuestionNode {
+    public static class QuestionNode {
         // Your code here
         public String data;
         public QuestionNode left;
