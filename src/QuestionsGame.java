@@ -1,15 +1,15 @@
 //Hank Henning and Alexis Rambaran
 //Watson
 //1/31/23
-//20 Questions Lab
+//20 Questions Lab: This lab will output to the user to answer y/n questions if not guessed by computer it will get smarter as one keeps playing
 
 import java.util.*;
 import java.io.*;
 
 public class QuestionsGame {
     // This tree will hold questions and answers throughout the game
-    private QuestionNode overallRoot;
-    private Scanner reader;
+    QuestionNode overallRoot;
+    Scanner reader;
 
     //This default constructor will
     public QuestionsGame()

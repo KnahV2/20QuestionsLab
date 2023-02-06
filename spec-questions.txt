@@ -2,6 +2,10 @@ Q:
 Is it an animal?
 Q:
 Can it fly?
+Q:
+Fly at night?
+A:
+bat
 A:
 bird
 Q:
