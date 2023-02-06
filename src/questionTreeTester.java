@@ -5,11 +5,10 @@ import java.util.Scanner;
 
 public class questionTreeTester
 {
-    QuestionNode overallRoot;
     public static void main(String[] args) throws IOException{
         BinaryTreePrinter printer = new BinaryTreePrinter();
 
-        Scanner file = new Scanner(new File("spec-questions.txt"));
+        Scanner file = new Scanner(new File("hanksdumbquestions"));
         QuestionsGame theTree = new QuestionsGame(file);
         printer.printPreOrder(System.out, theTree.overallRoot); 
     }
