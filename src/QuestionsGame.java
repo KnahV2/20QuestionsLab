@@ -45,6 +45,7 @@ public class QuestionsGame {
         String data = input.nextLine();
         QuestionNode root = new QuestionNode(data);  
     
+        //If the input is equal to the question then it will use recursion and input them to the left and right
         if (type.contains("Q:")) {
            root.left = readHelper(input);
            root.right = readHelper(input);   
@@ -52,6 +53,7 @@ public class QuestionsGame {
         return root; 
      }
 
+     //This method will store the current questions tree to an output file and PrintStream variable null then throw a illigal argument exception
     public void saveQuestions(PrintStream output)
     {
         if(output == null)
@@ -61,13 +63,16 @@ public class QuestionsGame {
         saveQuestions(overallRoot, output);
     }
 
+    //Uses recursion for save questions and answers
     private void saveQuestions(QuestionNode root, PrintStream output)
     {
+        //Checks to see if the root is the answer if so then will use Printstream and put an A and the root answer
         if(isAnswer(root))
         {
             output.println("A:");
             output.println(root.data);
         }
+        //If not an answer then will say it is a question then will use Printstream and put anQ and the root questions while recalling it until there is an answer
         else
         {
             output.println("Q:");
@@ -77,6 +82,7 @@ public class QuestionsGame {
         }
     }
 
+    //Will read the tree and make sure there is a tree
     public String readTree(){
         if(overallRoot == null) {
 			return "No Tree";
@@ -84,21 +90,26 @@ public class QuestionsGame {
 		return readTree(overallRoot);
 	}
 	
+    //Will use recursion to read the tree in preorder and will return the tree in preorder
 	private String readTree(QuestionNode root) {
 		String total = "";
 		
+        //Checks to make sure there is no children and then will add that data to the string
 		if(root.left == null && root.right == null) {
 			total = total + root.data + " ";
 			return total;
 		}
 		
 		else {
+            //Adds the root to the string
             total = total + root.data + " ";
             
+            //Recursively goes through the left side of tree
 			if(root.left != null) {
 				total = total + readTree(root.left);
 			}
 			
+            //Recursively goes through the right side of tree
 			if(root.right != null) {
 				total = total + readTree(root.right);
 			}
@@ -107,11 +118,13 @@ public class QuestionsGame {
 		return total;
     }
 
+    //
     public void play(Scanner file)
     {
         overallRoot = play(overallRoot, file);
     }
 
+    //
     private QuestionNode play(QuestionNode currentSpot, Scanner file)
     {
 
@@ -152,6 +165,7 @@ public class QuestionsGame {
         return currentSpot;
     }
 
+    //
     public boolean yesTo(String prompt)
     {
         System.out.print(prompt + " (y/n)?");
@@ -165,6 +179,7 @@ public class QuestionsGame {
         return response.startsWith("y");
     }
 
+    //
     private boolean isAnswer(QuestionNode node)
     {
         return (node.left == null || node.right == null);
