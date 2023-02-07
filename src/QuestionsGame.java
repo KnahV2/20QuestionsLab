@@ -7,33 +7,30 @@ import java.util.*;
 import java.io.*;
 
 public class QuestionsGame {
-    //This tree will hold questions and answers throughout the game
+    // This tree will hold questions and answers throughout the game
     QuestionNode overallRoot;
-    //This scanner will hold the user's input
     Scanner reader;
 
-    //This default constructor will fill in a starter answer for the tree
+    //This default constructor will
     public QuestionsGame()
     {
         overallRoot = new QuestionNode("computer");
         reader = new Scanner(System.in);
     }
 
-    //This constructer with a parameter will initialize the tree with the parameter as a single leaf node and make initiate the scanner
+    //This constructer with a parameter will initialize the tree with the parameter as a single leaf node 
     public QuestionsGame(String object)
     {
         overallRoot = new QuestionNode(object);
         reader = new Scanner(System.in);
     }
 
-    //This constructor will take the input from the scanner and read the input from the scanner and make initiate the scanner
     public QuestionsGame(Scanner input)
     {
         read(input);
         reader = new Scanner(System.in);
     }
 
-    //Will read each line in the scanner parameter and make it equal to the tree root/leaves
     public void read(Scanner input) {
         while(input.hasNextLine()) {
            overallRoot = readHelper(input); 
@@ -185,8 +182,8 @@ public class QuestionsGame {
         return (node.left == null || node.right == null);
     }
 
-    //Will create the nodes for the tree in order for the tree to have a left/right and data for each node
     public static class QuestionNode {
+        // Your code here
         public String data;
         public QuestionNode left;
         public QuestionNode right;
