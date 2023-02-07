@@ -14,6 +14,25 @@ public class questionTreeTester
     }
 }
 
+class QuestionNode {
+    // Your code here
+    public String data;
+    public QuestionNode left;
+    public QuestionNode right;
+
+    public QuestionNode(String data)
+    {
+        this(data, null, null);
+    }
+
+    public QuestionNode(String data, QuestionNode left, QuestionNode right)
+    {
+        this.data = data;
+        this.left = left;
+        this.right = right;
+    }
+}
+
 class BinaryTreePrinter {
 
     public BinaryTreePrinter() {}
