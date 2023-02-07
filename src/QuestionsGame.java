@@ -115,11 +115,7 @@ public class QuestionsGame {
 		return total;
     }
 
-<<<<<<< HEAD
     //runs through the file that the user picked to play 20 questions.
-=======
-    //
->>>>>>> b599948cea6f9463714e43d862cf841712610a2e
     public void play(Scanner file)
     {
         overallRoot = play(overallRoot, file);
@@ -169,11 +165,7 @@ public class QuestionsGame {
         return currentSpot;
     }
 
-<<<<<<< HEAD
     //Method to check the response of the user
-=======
-    //
->>>>>>> b599948cea6f9463714e43d862cf841712610a2e
     public boolean yesTo(String prompt)
     {
         System.out.print(prompt + " (y/n)?");
@@ -188,11 +180,7 @@ public class QuestionsGame {
         return response.startsWith("y");
     }
 
-<<<<<<< HEAD
     //checks if the current data that's being pointed to is an answer or a question
-=======
-    //
->>>>>>> b599948cea6f9463714e43d862cf841712610a2e
     private boolean isAnswer(QuestionNode node)
     {
         return (node.left == null || node.right == null);
