@@ -104,6 +104,7 @@ public class QuestionsGame {
 		return total;
     }
 
+    //runs through the file that the user picked to play 20 questions.
     public void play(Scanner file)
     {
         overallRoot = play(overallRoot, file);
@@ -111,9 +112,10 @@ public class QuestionsGame {
 
     private QuestionNode play(QuestionNode currentSpot, Scanner file)
     {
-
+        //makes sure that the current node is an answer
         if(isAnswer(currentSpot))
         {
+            //checks if the user said yes to an answer
             if(yesTo(currentSpot.data))
             {
                 System.out.println("I got it right you suck xd");
@@ -125,6 +127,7 @@ public class QuestionsGame {
                 System.out.println("Give me a yes/no question that");
                 System.out.println("distinguishes your thing from mine");
                 String question = reader.nextLine();
+                //if statement that determines what type of answer the user's thing is
                 if(yesTo("And what is the answer for your thing"))
                 {
                     currentSpot = new QuestionNode(question, answer, currentSpot);
@@ -137,6 +140,7 @@ public class QuestionsGame {
         }
         else
         {
+            //runs through the rest of the text file
             if(yesTo(currentSpot.data))
             {
                 currentSpot.left = play(currentSpot.left, file);
@@ -149,10 +153,12 @@ public class QuestionsGame {
         return currentSpot;
     }
 
+    //Method to check the response of the user
     public boolean yesTo(String prompt)
     {
         System.out.print(prompt + " (y/n)?");
         String response = reader.nextLine().trim().toLowerCase();
+        //while loop that waits until the user types a term that begins with the letter y or n
         while(!response.startsWith("y") && !response.startsWith("n"))
         {
             System.out.println("Please answer yes or no");
@@ -162,6 +168,7 @@ public class QuestionsGame {
         return response.startsWith("y");
     }
 
+    //checks if the current data that's being pointed to is an answer or a question
     private boolean isAnswer(QuestionNode node)
     {
         return (node.left == null || node.right == null);
